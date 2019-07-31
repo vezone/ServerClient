@@ -3,12 +3,84 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:ClientUI.Views"
+             xmlns:local="clr-namespace:ClientUI.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="850" d:DesignWidth="1200">
+
+    <UserControl.DataContext>
+        <local:DialogsViewModel/>
+    </UserControl.DataContext>
+
     <Grid>
-        <TextBlock>
-            PROFILE
-        </TextBlock>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="6*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+
+            <Ellipse 
+                Grid.Row="0"
+                Grid.RowSpan="2"
+                Grid.Column="0"
+                Width="150" 
+                Height="150"
+                Margin="5"
+                >
+                <Ellipse.Fill>
+                    <ImageBrush 
+                        ImageSource="{Binding AvatarImagePath, UpdateSourceTrigger=PropertyChanged}" 
+                        
+                    />
+                </Ellipse.Fill>
+            </Ellipse>
+
+            <TextBlock  
+                Grid.Row="0"
+                Grid.Column="1"
+                HorizontalAlignment="Center"
+                FontSize="24"
+                Foreground="Aqua"
+                Margin="5"
+                Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}">
+            </TextBlock>
+            <Button
+                Grid.Row="2"
+                Grid.Column="0"
+                Content="Edit"
+                FontSize="20"
+                Margin="50 10 50 10"
+                Command="{Binding btn_Edit_Click}"
+                >
+                
+            </Button>
+        </Grid>
+        <ContentControl 
+         Name="Page"
+         Grid.Row="0"
+         Grid.RowSpan="3"
+         Grid.Column="1"
+         Grid.ColumnSpan="2"
+         Margin="5"
+         Content="{Binding ContentPage, UpdateSourceTrigger=PropertyChanged}"                        
+        />
     </Grid>
 </UserControl>

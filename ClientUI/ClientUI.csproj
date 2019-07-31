@@ -86,9 +86,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\ProfileInfo.cs" />
     <Compile Include="ViewModels\DialogsViewModel.cs" />
     <Compile Include="Views\ProfileView.xaml.cs">
       <DependentUpon>ProfileView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Profile\ProfileEditView.xaml.cs">
+      <DependentUpon>ProfileEditView.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\DialogsView.xaml">
       <SubType>Designer</SubType>
@@ -113,6 +117,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\ProfileView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Profile\ProfileEditView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -144,9 +152,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\CommonApp\CommonApp.csproj">
       <Project>{49df7091-2735-4024-a700-6069125ce39f}</Project>

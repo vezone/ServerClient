@@ -4,6 +4,7 @@
     {
         Login,
         Logout,
-        PostMessage
+        PostMessage,
+        ChangedNickname
     }
 }

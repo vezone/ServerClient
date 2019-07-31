@@ -79,6 +79,16 @@ namespace ServerApp
                             }
                         }
                         break;
+                        case OperationType.ChangedNickname:
+                        {
+                            string newNickname = request.Client.Message;
+                            if (newNickname.Length > 0 &&
+                                !string.IsNullOrWhiteSpace(newNickname))
+                            {
+                                m_Clients[socket].Nickname = newNickname;
+                            }
+                        }
+                        break;
                         default:
                             //Console.WriteLine(message);
                             break;

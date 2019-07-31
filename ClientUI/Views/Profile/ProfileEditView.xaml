@@ -1,0 +1,114 @@
+﻿<UserControl x:Class="ClientUI.Views.Profile.ProfileEditView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ClientUI.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="600">
+
+    <UserControl.DataContext>
+        <local:DialogsViewModel/>
+    </UserControl.DataContext>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label
+            Content="Avatar image"
+            Grid.Row="0"
+            Grid.Column="0"
+            FontSize="26"
+            Foreground="Aqua"
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Center"
+            Margin="15"
+            >
+
+        </Label>
+
+        <Ellipse 
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            Grid.Column="2"
+            Width="150" 
+            Height="130"
+            Margin="5"
+            >
+            <Ellipse.Fill>
+                <ImageBrush 
+                        ImageSource="{Binding AvatarImagePath}" 
+                        
+                    />
+            </Ellipse.Fill>
+        </Ellipse>
+        
+        
+        <Button
+            Grid.Row="0"
+            Grid.Column="1"
+            Margin="15"
+            Content="Change image"
+            FontSize="24"
+            Foreground="Green"
+            Background="Black"
+            Command="{Binding btn_ChangeImage_Click}"
+            >
+            
+        </Button>
+        
+        <Label
+            Content="Nickname"
+            Grid.Row="2"
+            Grid.Column="0"
+            FontSize="26"
+            Foreground="Aqua"
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Center"
+            Margin="15"
+            >
+            
+        </Label>
+        
+        <TextBox 
+            Text="{Binding NewUsername, UpdateSourceTrigger=PropertyChanged}"
+            
+            Grid.Row="2"
+            Grid.Column="1"
+            Margin="15"
+            MaxLines="1"
+            FontSize="24"
+            Foreground="Green"
+            Background="Black"
+            Padding="5"
+            HorizontalContentAlignment="Center" TextChanged="TextBox_TextChanged"
+            />
+
+        <Button
+            Grid.Row="5"
+            Grid.Column="1"
+            Content="Apply"
+            FontSize="20"
+            Foreground="Green"
+            Background="Black"
+            Margin="15 25 15 25"
+            Command="{Binding btn_Apply_Click}"
+            >
+            
+        </Button>
+        
+    </Grid>
+</UserControl>

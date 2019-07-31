@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClientUI.Models;
+using System;
 using System.Windows.Controls;
 
 namespace ClientUI.ViewModels
@@ -13,6 +14,8 @@ namespace ClientUI.ViewModels
         private RelayCommand ProfileSelectCommand;
         private RelayCommand DialogsSelectCommand;
         private RelayCommand ExitCommand;
+
+        private string m_AvatarImagePath;
 
         public ContentControl ContentPage
         {
@@ -37,7 +40,7 @@ namespace ClientUI.ViewModels
                 }
                 ContentPage = m_ProfilePage;
             }
-
+            
             ProfileSelectCommand = new RelayCommand((object obj) =>
             {
                 if (m_ProfilePage == null)
@@ -66,9 +69,38 @@ namespace ClientUI.ViewModels
                     CloseAction();
                 }
             });
+
+            AvatarImagePath = ProfileInfo.ProfileImagePath;
+
         }
 
         public Action CloseAction { get; set; }
+
+        public string AvatarImagePath
+        {
+            get
+            {
+                return m_AvatarImagePath;
+            }
+            set
+            {
+                m_AvatarImagePath = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Nickname
+        {
+            get
+            {
+                return ProfileInfo.ProfileNickname;
+            }
+            set
+            {
+                ProfileInfo.ProfileNickname = value;
+                OnPropertyChanged();
+            }
+        }
 
         public RelayCommand btn_ProfilePageSelect_Click
         {

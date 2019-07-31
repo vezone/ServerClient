@@ -8,82 +8,104 @@
         Title="MainWindowView" 
         Height="850" Width="1200"
         WindowStartupLocation="CenterScreen">
-    
+
     <Border Background="#2e3137"
             CornerRadius="20"
             Margin="10"
-            MouseLeftButtonDown="Event_MouseLeftButtonDown">
-            <Grid Margin="10">
+            MouseLeftButtonDown="Event_MouseLeftButtonDown"
+            
+            >
+        <Grid Margin="10">
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="160"/>
-                    <ColumnDefinition Width="150*"/>
-                </Grid.ColumnDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="180"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
+            <Grid Grid.Column="0">
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            
+            <Ellipse 
+                Margin="5"
+                Grid.Row="0"
+                Grid.Column="0"
+                >
+                <Ellipse.Fill>
+                    <ImageBrush 
+                    ImageSource="{Binding AvatarImagePath, UpdateSourceTrigger=PropertyChanged}"/>
+                </Ellipse.Fill>
+            </Ellipse>
 
-                <Border 
-                    Grid.RowSpan="6"
-                    Grid.Column="0"
-                    Background="White"
-                    Margin="5 50 0 50">
+            <Label
+                Grid.Row="1"
+                Grid.Column="0"
+                FontSize="24"
+                HorizontalContentAlignment="Center"
+                Margin="5"
+                Foreground="Aqua"
+                Content="{Binding Nickname, UpdateSourceTrigger=PropertyChanged}"
+                >
+                
+            </Label>
+            
+            <Button Name="btn_ProfilePageSelect"
+                Content="Profile"
+                FontSize="30"
+                Grid.Row="2"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                MinHeight="65"
+                Command="{Binding btn_ProfilePageSelect_Click}"/>
+            
+            <Button Name="btn_DialogsPageSelect"
+                Content="Dialogs"
+                FontSize="30"
+                Grid.Row="3"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                MinHeight="65"
+                Command="{Binding btn_DialogsPageSelect_Click}"/>
+            
+            <Button Name="btn_Exit"
+                Content="Exit"
+                FontSize="30"
+                Grid.Row="4"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                MinHeight="2"
+                Command="{Binding btn_Exit_Click}"
+            
+            />
+            
+            </Grid>
+            
 
-                <Grid Grid.Column="0">
-
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="160"/>
-                    </Grid.ColumnDefinitions>
-
-                    <Image />
-
-                    <Button Name="btn_ProfilePageSelect"
-                        Content="Profile"
-                        FontSize="30"
-                        Grid.Row="0"
-                        HorizontalAlignment="Stretch"
-                        VerticalAlignment="Stretch"
-                        MinHeight="65"
-                        Command="{Binding btn_ProfilePageSelect_Click}"/>
-
-                    <Button Name="btn_DialogsPageSelect"
-                        Content="Dialogs"
-                        FontSize="30"
-                        Grid.Row="1"
-                        HorizontalAlignment="Stretch"
-                        VerticalAlignment="Stretch"
-                        MinHeight="65"
-                        Command="{Binding btn_DialogsPageSelect_Click}"/>
-
-                    <Button Name="btn_Exit"
-                        Content="Exit"
-                        FontSize="30"
-                        Grid.Row="2"
-                        HorizontalAlignment="Stretch"
-                        VerticalAlignment="Stretch"
-                        MinHeight="2"
-                        Command="{Binding btn_Exit_Click}"/>
-
-
-                </Grid>
-                </Border>
-
-                <ContentControl 
-                  Name="Page"
-                  Grid.RowSpan="7"
-                  Grid.Column="1"
-                  Margin="15 0 0 0"
-                  Content="{Binding ContentPage, UpdateSourceTrigger=PropertyChanged}"                        
+            <ContentControl 
+                Name="Page"
+                Grid.Column="1"
+                Margin="5"
+                Content="{Binding ContentPage, UpdateSourceTrigger=PropertyChanged}"                        
                  />
 
-            </Grid>
-        </Border>
+        </Grid>
+    </Border>
 </Window>

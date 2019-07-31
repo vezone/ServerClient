@@ -5,16 +5,16 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ClientUI.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="850" d:DesignWidth="1200">
+             >
 
     <UserControl.DataContext>
         <local:DialogsViewModel/>
     </UserControl.DataContext>
-
     <UserControl.InputBindings>
         <KeyBinding 
-            Key="Enter"
-            Command="{Binding SendMessageCommand}"/>
+            Modifiers="Ctrl"
+            Key="Return"
+            Command="{Binding btn_Send_Click}"/>
     </UserControl.InputBindings>
 
     <Grid>
@@ -30,13 +30,14 @@
 
         <ScrollViewer Grid.Row="0">
             <TextBlock 
+                   Name="tb_MessageView"
                    FontSize="20"
                    Foreground="Red"
                    Text="{Binding MessagesView, UpdateSourceTrigger=PropertyChanged}"
                    Width="954"
                    HorizontalAlignment="Left"
                    TextAlignment="Left"
-                   Margin="5,5,5,5"
+                   Margin="10 20 10 20"
                    Visibility="Visible"
                    TextWrapping="Wrap"
                 >
@@ -46,8 +47,9 @@
             Orientation="Horizontal"
             Grid.Row="1">
             <TextBox 
+                Name="txb_Input"
                 Width="780"
-                Margin="5 5 5 5"
+                Margin="10 10 10 10"
                 VerticalScrollBarVisibility="Auto"
                 AcceptsTab="True"
                 AcceptsReturn="True"
@@ -55,12 +57,14 @@
                 Text="{Binding InputBoxText, UpdateSourceTrigger=PropertyChanged}"
                 >
             </TextBox>
-            <StackPanel Orientation="Vertical">
+            <StackPanel 
+                Margin="5"
+                Orientation="Vertical">
                 <Button 
                     Content="..."
                     FontSize="24"
-                    Width="170"
-                    Height="45"
+                    Width="130"
+                    Height="35"
                     Margin="2 5 2 0"
                     HorizontalContentAlignment="Center"
                     VerticalAlignment="Center">
@@ -69,8 +73,8 @@
                 <Button 
                     Content="Send"
                     FontSize="24"
-                    Width="170"
-                    Height="45"
+                    Width="130"
+                    Height="35"
                     Margin="2 5 2 0"
                     HorizontalContentAlignment="Center"
                     VerticalAlignment="Center"
